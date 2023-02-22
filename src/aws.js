@@ -42,7 +42,15 @@ async function startEc2Instance(label, githubRegistrationToken) {
     SubnetId: config.input.subnetId,
     SecurityGroupIds: [config.input.securityGroupId],
     IamInstanceProfile: { Name: config.input.iamRoleName },
-    TagSpecifications: config.tagSpecifications,   
+    TagSpecifications: config.tagSpecifications,
+    InstanceMarketOptions: {
+      MarketType: spot,
+      SpotOptions: {
+        InstanceInterruptionBehavior: terminate,
+        MaxPrice: '8',
+        SpotInstanceType: one-time
+      }
+    },
   };
 
   try {
