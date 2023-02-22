@@ -15,7 +15,9 @@ jobs:
         with:
           ref: main
       - name: Install packages
-        run: npm ci
+        run: |
+            npm ci
+            npm install -g npm-check-updates
 
       - name: Package
         run: npm run package
