@@ -44,11 +44,11 @@ async function startEc2Instance(label, githubRegistrationToken) {
     IamInstanceProfile: { Name: config.input.iamRoleName },
     TagSpecifications: config.tagSpecifications,
     InstanceMarketOptions: {
-      MarketType: spot,
+      MarketType: 'spot',
       SpotOptions: {
-        InstanceInterruptionBehavior: terminate,
+        InstanceInterruptionBehavior: 'terminate',
         MaxPrice: '8',
-        SpotInstanceType: one-time
+        SpotInstanceType: 'one-time'
       }
     },
   };
